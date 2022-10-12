@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     ParticleSystem part;
     ParticleSystem.EmissionModule emissionModule;
 
+    Transform respawnPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
         //jetParticles.GetComponent<ParticleSystem>().Stop();
         emissionModule = part.emission;
         emissionModule.rateOverTime = 0;
+        respawnPos = GameObject.FindGameObjectWithTag("Respawn").transform;
     }
 
     // Update is called once per frame
@@ -85,6 +88,11 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             inAir = false;
+        }
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            gasSlider.value = gasSlider.maxValue;
+            transform.position = respawnPos.position;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
