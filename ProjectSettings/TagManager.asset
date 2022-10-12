@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Ground
   - Spike
+  - Camera Bound
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Camera Bound
   - Water
   - UI
   - 
