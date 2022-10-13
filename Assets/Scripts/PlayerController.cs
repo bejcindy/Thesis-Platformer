@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed, jumpSpeed, jetSpeed;
     public Slider gasSlider;
     public float gasAmount, useSpeed, refillSpeed;
+    public bool respawn;
 
     Rigidbody2D rb;
     float moveX;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     ParticleSystem.EmissionModule emissionModule;
 
     Transform respawnPos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,17 @@ public class PlayerController : MonoBehaviour
         emissionModule = part.emission;
         emissionModule.rateOverTime = 0;
         respawnPos = GameObject.FindGameObjectWithTag("Respawn").transform;
+        respawn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (respawn)
+        {
+            transform.position = respawnPos.position;
+            respawn = false;
+        }
         if (Input.GetButton("Fire1") && gasSlider.value > 0)
         {
             //如果在喷气
