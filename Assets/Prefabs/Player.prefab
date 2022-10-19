@@ -4965,4 +4965,5 @@ MonoBehaviour:
   gasSlider: {fileID: 0}
   gasAmount: 10
   useSpeed: 10
-  refillSpeed: 2
+  refillSpeed: 100
+  respawn: 0
