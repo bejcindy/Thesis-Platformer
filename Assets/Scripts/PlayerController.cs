@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -87,6 +88,10 @@ public class PlayerController : MonoBehaviour
             {
                 gasSlider.value = gasSlider.maxValue;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene("Level Select");
         }
     }
 
