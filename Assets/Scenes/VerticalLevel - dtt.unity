@@ -1135,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6150818713207211289, guid: e0a0e86531b00401b8da379d0411285c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a0e86531b00401b8da379d0411285c, type: 3}
 --- !u!1 &910483140
@@ -1314,6 +1318,10 @@ PrefabInstance:
     - target: {fileID: 6150818713207211289, guid: e0a0e86531b00401b8da379d0411285c, type: 3}
       propertyPath: m_Name
       value: Ground (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150818713207211289, guid: e0a0e86531b00401b8da379d0411285c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0a0e86531b00401b8da379d0411285c, type: 3}
@@ -1948,6 +1956,10 @@ PrefabInstance:
       propertyPath: gasSlider
       value: 
       objectReference: {fileID: 955131538}
+    - target: {fileID: 4165235157975348506, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
+      propertyPath: gravityMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4165235157975348507, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
       propertyPath: m_Name
       value: Player

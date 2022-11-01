@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float walkSpeed, jumpSpeed, jetSpeed;
+    //public float walkSpeed, jumpSpeed, jetSpeed;
+    public float jetSpeed;
+    public float gravityMultiplier;
     public Slider gasSlider;
     public float gasAmount, useSpeed, refillSpeed;
     public bool respawn;
@@ -25,6 +27,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gravityMultiplier == 0)
+        {
+            gravityMultiplier = 1;
+        }
+        Physics2D.gravity = Physics2D.gravity * gravityMultiplier;
         rb = GetComponent<Rigidbody2D>();
         gasSlider.maxValue = gasAmount;
         gasSlider.value = gasAmount;
@@ -59,14 +66,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("here");
+            //Debug.Log("here");
             //如果没在喷气
-            moveX = walkSpeed * Input.GetAxis("Horizontal");
-            if (Input.GetKeyDown(KeyCode.Space) && grounded)
-            {
-                rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            }
-            rb.velocity = new Vector2(moveX, rb.velocity.y);
+            //Jump & WASD Movement
+            //moveX = walkSpeed * Input.GetAxis("Horizontal");
+            //if (Input.GetKeyDown(KeyCode.Space) && grounded)
+            //{
+            //    rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            //}
+            //rb.velocity = new Vector2(moveX, rb.velocity.y);
+
             inAir = false;
             emissionModule.rateOverTime = 0;
         }
@@ -99,8 +108,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            grounded = true;
-            inAir = false;
+            //不能摸墙recharge
+            if(transform.position.y> collision.gameObject.transform.position.y)
+            {
+                grounded = true;
+                inAir = false;
+            }
+
         }
         if (collision.gameObject.CompareTag("Spike"))
         {
