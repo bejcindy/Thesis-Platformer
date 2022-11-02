@@ -7,10 +7,20 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     //public float walkSpeed, jumpSpeed, jetSpeed;
+
+    [Header("Jet Max Speed")]
     public float jetSpeed;
+    [Space(10)]
     public float gravityMultiplier;
     public Slider gasSlider;
     public float gasAmount, useSpeed, refillSpeed;
+
+    [Header("Jet Mode (Accelerate/Same Speed)")]
+    public bool accel;
+    [Header("If Accelerate")]
+    public float accelRate;
+
+    [HideInInspector]
     public bool respawn;
 
     Rigidbody2D rb;
@@ -20,6 +30,8 @@ public class PlayerController : MonoBehaviour
     GameObject jetParticles;
     ParticleSystem part;
     ParticleSystem.EmissionModule emissionModule;
+    Vector2 originalGravity;
+    float currentSpeed;
 
     Transform respawnPos;
 
@@ -31,7 +43,8 @@ public class PlayerController : MonoBehaviour
         {
             gravityMultiplier = 1;
         }
-        Physics2D.gravity = Physics2D.gravity * gravityMultiplier;
+        originalGravity = Physics2D.gravity;
+        //Physics2D.gravity = Physics2D.gravity * gravityMultiplier;
         rb = GetComponent<Rigidbody2D>();
         gasSlider.maxValue = gasAmount;
         gasSlider.value = gasAmount;
@@ -42,10 +55,10 @@ public class PlayerController : MonoBehaviour
         emissionModule.rateOverTime = 0;
         respawnPos = GameObject.FindGameObjectWithTag("Respawn").transform;
         respawn = false;
+        currentSpeed = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (respawn)
         {
@@ -58,10 +71,26 @@ public class PlayerController : MonoBehaviour
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 pos = transform.position;
             jetDirection = (pos - mousePos).normalized;
-            rb.velocity = jetSpeed * jetDirection;
+            if (!accel)
+            {
+                rb.velocity = jetSpeed * jetDirection;
+            }
+            else
+            {
+                if (currentSpeed < jetSpeed)
+                {
+                    currentSpeed += accelRate;
+                }
+                else
+                {
+                    currentSpeed = jetSpeed;
+                }
+                rb.velocity = currentSpeed * jetDirection;
+            }
+
             inAir = true;
             jetParticles.transform.forward = mousePos - pos;
-
+            Physics2D.gravity = originalGravity;
             emissionModule.rateOverTime = 10;
         }
         else
@@ -75,11 +104,15 @@ public class PlayerController : MonoBehaviour
             //    rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             //}
             //rb.velocity = new Vector2(moveX, rb.velocity.y);
-
+            Physics2D.gravity = originalGravity * gravityMultiplier;
             inAir = false;
+            currentSpeed = 0;
             emissionModule.rateOverTime = 0;
         }
+    }
 
+    void Update()
+    {
         //如果正在喷气
         if(inAir && !grounded && gasSlider.value > 0)
         {

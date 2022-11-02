@@ -1953,6 +1953,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4165235157975348506, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
+      propertyPath: accel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165235157975348506, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
+      propertyPath: jetSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165235157975348506, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
+      propertyPath: accelRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165235157975348506, guid: 34e568d75fdfa47aabe340dcd169b866, type: 3}
       propertyPath: gasSlider
       value: 
       objectReference: {fileID: 955131538}
