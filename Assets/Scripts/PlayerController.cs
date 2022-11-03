@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,15 @@ public class PlayerController : MonoBehaviour
     public Slider gasSlider;
     public float gasAmount, useSpeed, refillSpeed;
 
+    public enum Bounciness
+    {
+        Bouncy,
+        NotBouncy
+    };
+    public Bounciness bounciness;
+
+
+
     [Header("Jet Mode (Accelerate/Same Speed)")]
     public bool accel;
     [Header("If Accelerate")]
@@ -23,6 +33,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool respawn;
 
+    public PhysicsMaterial2D bouncy, notBouncy;
+
+    public TextMeshProUGUI characterStat;
+    
     Rigidbody2D rb;
     float moveX;
     Vector2 jetDirection;
@@ -34,7 +48,8 @@ public class PlayerController : MonoBehaviour
     float currentSpeed;
 
     Transform respawnPos;
-
+    bool bounce, highGrav;
+    string b, a, g;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +71,17 @@ public class PlayerController : MonoBehaviour
         respawnPos = GameObject.FindGameObjectWithTag("Respawn").transform;
         respawn = false;
         currentSpeed = 0;
+        b = "Bounciness (Z): No";
+        a = "Jet Speed (X): Accelerate";
+        g = "Gravity (C): Normal";
+        if (bounciness == Bounciness.Bouncy)
+        {
+            GetComponent<Collider2D>().sharedMaterial = bouncy;
+        }
+        else
+        {
+            GetComponent<Collider2D>().sharedMaterial = notBouncy;
+        }
     }
 
     void FixedUpdate()
@@ -135,6 +161,50 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("Level Select");
         }
+
+        //调节Character数值
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            bounce = !bounce;
+            if (bounce)
+            {
+                b = "Bounciness (Z): Bouncy";
+                GetComponent<Collider2D>().sharedMaterial = bouncy;
+            }
+            else
+            {
+                b = "Bounciness (Z): No";
+                GetComponent<Collider2D>().sharedMaterial = notBouncy;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            accel = !accel;
+            if (accel)
+            {
+                a = "Jet Speed (X): Accelerate";
+            }
+            else
+            {
+                a = "Jet Speed (X): Same Speed";
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            highGrav = !highGrav;
+            if (highGrav)
+            {
+                g = "Gravity (C): High";
+                gravityMultiplier = 2f;
+            }
+            else
+            {
+                g = "Gravity (C): Normal";
+                gravityMultiplier = 1f;
+            }
+        }
+        
+        characterStat.text = b + "\n" + a + "\n" + g;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

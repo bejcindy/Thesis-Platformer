@@ -4909,7 +4909,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4165235157975348507}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a9d5b216c2454ee191e5d335f8431e6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4959,11 +4959,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5da51254410e4befa94f6ec16224f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  jumpSpeed: 10
   jetSpeed: 10
+  gravityMultiplier: 1
   gasSlider: {fileID: 0}
   gasAmount: 10
   useSpeed: 10
   refillSpeed: 100
+  bounciness: 1
+  accel: 1
+  accelRate: 0.5
   respawn: 0
+  bouncy: {fileID: 6200000, guid: 2a9d5b216c2454ee191e5d335f8431e6, type: 2}
+  notBouncy: {fileID: 6200000, guid: 1644e442aaf4c4cfe976bbe299dbdec8, type: 2}
+  characterStat: {fileID: 0}
