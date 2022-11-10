@@ -36,7 +36,10 @@ public class PlayerController : MonoBehaviour
     public PhysicsMaterial2D bouncy, notBouncy;
 
     public TextMeshProUGUI characterStat;
-    
+
+    public AudioClip snotJet;
+
+    AudioSource audio;
     Rigidbody2D rb;
     float moveX;
     Vector2 jetDirection;
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
             gravityMultiplier = 1;
         }
         originalGravity = Physics2D.gravity;
-        
+        audio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         gasSlider.maxValue = gasAmount;
         gasSlider.value = gasAmount;
@@ -110,7 +113,11 @@ public class PlayerController : MonoBehaviour
                 }
                 rb.velocity = currentSpeed * jetDirection;
             }
-
+            if (!audio.isPlaying)
+            {
+                audio.clip = snotJet;
+                audio.Play();
+            }
             inAir = true;
             //jetParticles.transform.forward = mousePos - pos;
             nose.GetComponent<SnotMaster>().runnyNose = true;
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = originalGravity * gravityMultiplier;
             inAir = false;
             currentSpeed = 0;
+            audio.Stop();
             //emissionModule.rateOverTime = 0;
         }
     }
