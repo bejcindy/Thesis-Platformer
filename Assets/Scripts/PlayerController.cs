@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip snotJet;
 
-    AudioSource audio;
+    AudioSource aud;
     Rigidbody2D rb;
     float moveX;
     Vector2 jetDirection;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             gravityMultiplier = 1;
         }
         originalGravity = Physics2D.gravity;
-        audio = GetComponent<AudioSource>();
+        aud = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         gasSlider.maxValue = gasAmount;
         gasSlider.value = gasAmount;
@@ -113,10 +113,10 @@ public class PlayerController : MonoBehaviour
                 }
                 rb.velocity = currentSpeed * jetDirection;
             }
-            if (!audio.isPlaying)
+            if (!aud.isPlaying)
             {
-                audio.clip = snotJet;
-                audio.Play();
+                aud.clip = snotJet;
+                aud.Play();
             }
             inAir = true;
             //jetParticles.transform.forward = mousePos - pos;
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = originalGravity * gravityMultiplier;
             inAir = false;
             currentSpeed = 0;
-            audio.Stop();
+            aud.Stop();
             //emissionModule.rateOverTime = 0;
         }
     }
@@ -155,10 +155,7 @@ public class PlayerController : MonoBehaviour
                 gasSlider.value = gasSlider.maxValue;
             }
         }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            SceneManager.LoadScene("Level Select");
-        }
+        
 
         //调节Character数值
         if (characterStat)
