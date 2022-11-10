@@ -41,15 +41,14 @@ public class PlayerController : MonoBehaviour
     float moveX;
     Vector2 jetDirection;
     bool inAir, grounded;
-    GameObject jetParticles;
-    ParticleSystem part;
-    ParticleSystem.EmissionModule emissionModule;
+    
     Vector2 originalGravity;
     float currentSpeed;
 
     Transform respawnPos;
     bool bounce, highGrav;
     string b, a, g;
+    GameObject nose;
 
     // Start is called before the first frame update
     void Start()
@@ -59,15 +58,13 @@ public class PlayerController : MonoBehaviour
             gravityMultiplier = 1;
         }
         originalGravity = Physics2D.gravity;
-        //Physics2D.gravity = Physics2D.gravity * gravityMultiplier;
+        
         rb = GetComponent<Rigidbody2D>();
         gasSlider.maxValue = gasAmount;
         gasSlider.value = gasAmount;
-        jetParticles = transform.GetChild(0).gameObject;
-        part = jetParticles.GetComponent<ParticleSystem>();
-        //jetParticles.GetComponent<ParticleSystem>().Stop();
-        emissionModule = part.emission;
-        emissionModule.rateOverTime = 0;
+
+        nose = transform.GetChild(0).gameObject;
+        //Debug.Log(nose.name);
         respawnPos = GameObject.FindGameObjectWithTag("Respawn").transform;
         respawn = false;
         currentSpeed = 0;
@@ -115,25 +112,18 @@ public class PlayerController : MonoBehaviour
             }
 
             inAir = true;
-            jetParticles.transform.forward = mousePos - pos;
+            //jetParticles.transform.forward = mousePos - pos;
+            nose.GetComponent<SnotMaster>().runnyNose = true;
             Physics2D.gravity = originalGravity;
-            emissionModule.rateOverTime = 10;
+            //emissionModule.rateOverTime = 10;
         }
         else
         {
-            //Debug.Log("here");
-            //如果没在喷气
-            //Jump & WASD Movement
-            //moveX = walkSpeed * Input.GetAxis("Horizontal");
-            //if (Input.GetKeyDown(KeyCode.Space) && grounded)
-            //{
-            //    rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            //}
-            //rb.velocity = new Vector2(moveX, rb.velocity.y);
+            nose.GetComponent<SnotMaster>().runnyNose = false;
             Physics2D.gravity = originalGravity * gravityMultiplier;
             inAir = false;
             currentSpeed = 0;
-            emissionModule.rateOverTime = 0;
+            //emissionModule.rateOverTime = 0;
         }
     }
 
@@ -163,48 +153,51 @@ public class PlayerController : MonoBehaviour
         }
 
         //调节Character数值
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (characterStat)
         {
-            bounce = !bounce;
-            if (bounce)
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                b = "Bounciness (Z): Bouncy";
-                GetComponent<Collider2D>().sharedMaterial = bouncy;
+                bounce = !bounce;
+                if (bounce)
+                {
+                    b = "Bounciness (Z): Bouncy";
+                    GetComponent<Collider2D>().sharedMaterial = bouncy;
+                }
+                else
+                {
+                    b = "Bounciness (Z): No";
+                    GetComponent<Collider2D>().sharedMaterial = notBouncy;
+                }
             }
-            else
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                b = "Bounciness (Z): No";
-                GetComponent<Collider2D>().sharedMaterial = notBouncy;
+                accel = !accel;
+                if (accel)
+                {
+                    a = "Jet Speed (X): Accelerate";
+                }
+                else
+                {
+                    a = "Jet Speed (X): Same Speed";
+                }
             }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                highGrav = !highGrav;
+                if (highGrav)
+                {
+                    g = "Gravity (C): High";
+                    gravityMultiplier = 2f;
+                }
+                else
+                {
+                    g = "Gravity (C): Normal";
+                    gravityMultiplier = 1f;
+                }
+            }
+
+            characterStat.text = b + "\n" + a + "\n" + g;
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            accel = !accel;
-            if (accel)
-            {
-                a = "Jet Speed (X): Accelerate";
-            }
-            else
-            {
-                a = "Jet Speed (X): Same Speed";
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            highGrav = !highGrav;
-            if (highGrav)
-            {
-                g = "Gravity (C): High";
-                gravityMultiplier = 2f;
-            }
-            else
-            {
-                g = "Gravity (C): Normal";
-                gravityMultiplier = 1f;
-            }
-        }
-        
-        characterStat.text = b + "\n" + a + "\n" + g;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
