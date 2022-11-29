@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Spike
   - Camera Bound
+  - Bullet
+  - AlienBullet
+  - NoseMiddle
+  - Nose
   layers:
   - Default
   - TransparentFX

@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Select.unity
     guid: a7779c4dcd8e24b34b713880f9c8e318
   - enabled: 1
-    path: Assets/Scenes/HorizontalLevel.unity
+    path: Assets/Scenes/Platformer Levels/HorizontalLevel.unity
     guid: 3dd68c867cf6e433198d439d498433a7
   - enabled: 1
-    path: Assets/Scenes/VerticalLevel-btt.unity
+    path: Assets/Scenes/Platformer Levels/VerticalLevel-btt.unity
     guid: b62a9c0cf2f314441852795b5a020b0b
   - enabled: 1
-    path: Assets/Scenes/VerticalLevel-ttb.unity
+    path: Assets/Scenes/Platformer Levels/VerticalLevel-ttb.unity
     guid: 1edab88426cf84948ad3a8316fa84438
   - enabled: 0
     path: Assets/Scenes/Testing Scene.unity
