@@ -27,7 +27,7 @@ public class SINoseController : MonoBehaviour
         {
             //Cursor.lockState = CursorLockMode.Locked;
             //InputState.Change(mousePos, warpPosition);
-            Cursor.visible = false;
+            //Cursor.visible = false;
             for(int i = 0; i < noseMiddles.Length; i++)
             {
                 Destroy(noseMiddles[i]);
@@ -38,8 +38,8 @@ public class SINoseController : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
             transform.position = mousePos;
             if (Vector2.Distance(lastPos, mousePos) > .5f)
             {
@@ -53,11 +53,11 @@ public class SINoseController : MonoBehaviour
             goBack = true;
         }
     }
-    private void OnMouseOver()
-    {
-        if (goBack)
-        {
-            goBack = false;
-        }
-    }
+    //private void OnMouseOver()
+    //{
+    //    if (goBack)
+    //    {
+    //        goBack = false;
+    //    }
+    //}
 }

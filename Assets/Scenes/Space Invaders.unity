@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 486505461}
   - component: {fileID: 486505460}
   - component: {fileID: 486505459}
+  - component: {fileID: 486505462}
   m_Layer: 0
   m_Name: NoseBottom
   m_TagString: Nose
@@ -234,6 +235,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486505462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486505458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a202bc1b3287d4cf7b0d02b7fc273b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &728538834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,7 +476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -126691942, guid: 608ec1f6593304b7eb3dbebb782c6c06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -618,7 +631,7 @@ GameObject:
   - component: {fileID: 882217591}
   - component: {fileID: 882217590}
   - component: {fileID: 882217589}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoseTip
   m_TagString: Nose
   m_Icon: {fileID: 0}
@@ -790,7 +803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -126691942, guid: 608ec1f6593304b7eb3dbebb782c6c06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -835,8 +848,8 @@ RectTransform:
   m_GameObject: {fileID: 1458538354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2050630331}
   m_RootOrder: 0
@@ -844,7 +857,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1458538356
 MonoBehaviour:
@@ -866,7 +879,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -126691942, guid: 608ec1f6593304b7eb3dbebb782c6c06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -952,8 +965,8 @@ GameObject:
   - component: {fileID: 1589031351}
   - component: {fileID: 1589031350}
   - component: {fileID: 1589031349}
-  - component: {fileID: 1589031353}
   - component: {fileID: 1589031352}
+  - component: {fileID: 1589031353}
   m_Layer: 0
   m_Name: Protagonist
   m_TagString: Untagged
@@ -1022,12 +1035,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1897927313, guid: 47da76affba9e4f18baaaed47779a4e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1042,8 +1055,8 @@ Transform:
   m_GameObject: {fileID: 1589031348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: -4.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2104178819}
   m_Father: {fileID: 0}
@@ -1087,14 +1100,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.28}
+    newSize: {x: 0.32, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.28}
   m_EdgeRadius: 0
 --- !u!1 &1963309458
 GameObject:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6307630001090437593}
   - component: {fileID: 7226322780795223897}
   - component: {fileID: 5992922519061580178}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoseMiddle
   m_TagString: NoseMiddle
   m_Icon: {fileID: 0}

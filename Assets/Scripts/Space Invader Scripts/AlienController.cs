@@ -13,6 +13,7 @@ public class AlienController : MonoBehaviour
     bool canShoot;
     float energy;
     SpriteRenderer rend;
+    bool isOver;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,19 @@ public class AlienController : MonoBehaviour
     void Update()
     {
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, Mathf.Lerp(.3f, 1f, Mathf.InverseLerp(0, energyNeed, energy)));
+        if (Input.GetMouseButton(0)&&isOver)
+        {
+            Debug.Log("mouse");
+        }
+        Debug.Log(isOver);
     }
 
     private void OnMouseOver()
     {
+        isOver = true;
         if (Input.GetMouseButton(0))
         {
+            
             if (energy < energyNeed)
             {
                 //energy fill up
@@ -47,12 +55,15 @@ public class AlienController : MonoBehaviour
                 energy = energyNeed;
                 enoughEnergy = true;
             }
+            
         }
         if (Input.GetMouseButtonDown(0) && enoughEnergy)
         {
             canShoot = true;
         }
+        
     }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
