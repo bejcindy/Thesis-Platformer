@@ -25,7 +25,7 @@ public class SICharacterController : MonoBehaviour
         //hpIcons = new GameObject[maxhp];
         followed = true;
         shootPos = transform.GetChild(0);
-        InvokeRepeating("ShootBullets", 0, fireRate);
+        InvokeRepeating("ShootBullets", 3, fireRate);
     }
 
     // Update is called once per frame

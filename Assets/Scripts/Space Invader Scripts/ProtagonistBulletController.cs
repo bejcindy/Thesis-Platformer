@@ -19,7 +19,7 @@ public class ProtagonistBulletController : MonoBehaviour
     {
         if(collision.CompareTag("Nose")|| collision.CompareTag("NoseMiddle"))
         {
-            SINoseController.goBack = true;
+            RopeMaster.goBack = true;
             Destroy(gameObject);
         }
     }

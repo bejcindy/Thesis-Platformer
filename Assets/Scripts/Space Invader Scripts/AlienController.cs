@@ -14,6 +14,7 @@ public class AlienController : MonoBehaviour
     float energy;
     SpriteRenderer rend;
     bool isOver;
+    bool noseContact;
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +32,13 @@ public class AlienController : MonoBehaviour
     void Update()
     {
         rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, Mathf.Lerp(.3f, 1f, Mathf.InverseLerp(0, energyNeed, energy)));
-        if (Input.GetMouseButton(0)&&isOver)
-        {
-            Debug.Log("mouse");
-        }
-        Debug.Log(isOver);
+        
     }
 
     private void OnMouseOver()
     {
         isOver = true;
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && noseContact)
         {
             
             if (energy < energyNeed)
@@ -54,15 +51,16 @@ public class AlienController : MonoBehaviour
             {
                 energy = energyNeed;
                 enoughEnergy = true;
+                canShoot = true;
             }
             
         }
-        if (Input.GetMouseButtonDown(0) && enoughEnergy)
-        {
-            canShoot = true;
-        }
-        
+        //if (Input.GetMouseButtonDown(0) && enoughEnergy)
+        //{
+        //    canShoot = true;
+        //}
     }
+
 
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -71,6 +69,22 @@ public class AlienController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Nose"))
+        {
+            noseContact = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Nose"))
+        {
+            noseContact = false;
         }
     }
 

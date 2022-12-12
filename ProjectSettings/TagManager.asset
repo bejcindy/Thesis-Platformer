@@ -11,6 +11,7 @@ TagManager:
   - AlienBullet
   - NoseMiddle
   - Nose
+  - Enemy
   layers:
   - Default
   - TransparentFX
