@@ -12,6 +12,9 @@ TagManager:
   - NoseMiddle
   - Nose
   - Enemy
+  - Snot
+  - Beer
+  - Costumer
   layers:
   - Default
   - TransparentFX
