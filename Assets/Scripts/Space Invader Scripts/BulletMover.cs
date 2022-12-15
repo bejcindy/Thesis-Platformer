@@ -23,4 +23,8 @@ public class BulletMover : MonoBehaviour
         Vector2 moveDist = new Vector2(0, moveStep);
         transform.position += (transform.rotation * moveDist);
     }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

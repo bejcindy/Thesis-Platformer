@@ -10,18 +10,21 @@ public class SICharacterController : MonoBehaviour
     public GameObject bullet;
     public GameObject[] hpIcons;
     public GameObject GameOverText;
+    public AudioClip shootSound, hitSound;
 
     Vector2 mousePos;
     bool followed;
     Transform shootPos;
     int maxhp = 3;
     int hp;
+    AudioSource aud;
 
     // Start is called before the first frame update
     void Start()
     {
         hp = 3;
         GameOverText.SetActive(false);
+        aud = GetComponent<AudioSource>();
         //hpIcons = new GameObject[maxhp];
         followed = true;
         shootPos = transform.GetChild(0);
@@ -39,6 +42,7 @@ public class SICharacterController : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
+            Time.timeScale = 0;
             GameOverText.SetActive(true);
         }
         for(int i = 0; i < maxhp; i++)
@@ -56,6 +60,7 @@ public class SICharacterController : MonoBehaviour
         if (collision.CompareTag("AlienBullet"))
         {
             Destroy(collision.gameObject);
+            aud.PlayOneShot(hitSound);
             hp--;
         }
     }
@@ -71,6 +76,7 @@ public class SICharacterController : MonoBehaviour
 
     void ShootBullets()
     {
+        aud.PlayOneShot(shootSound);
         Instantiate(bullet, shootPos.position, shootPos.rotation);
     }
 }

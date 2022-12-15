@@ -77,6 +77,10 @@ public class AlienController : MonoBehaviour
                 //energy fill up
                 energy += Time.deltaTime;
                 enoughEnergy = false;
+                if (!aud.isPlaying)
+                {
+                    aud.PlayOneShot(rechargeAudio);
+                }
             }
             else
             {
@@ -86,11 +90,11 @@ public class AlienController : MonoBehaviour
             }
             
         }
+    }
 
-        //if (Input.GetMouseButtonDown(0) && enoughEnergy)
-        //{
-        //    canShoot = true;
-        //}
+    private void OnMouseExit()
+    {
+        aud.Stop();
     }
 
 

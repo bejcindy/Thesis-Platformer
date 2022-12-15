@@ -49,7 +49,7 @@ public class RopeMaster : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer > .1f)
                 {
-                    Debug.Log(segmentLength);
+                    //Debug.Log(segmentLength);
                     segmentLength++;
                     timer = 0;
                 }
