@@ -134,6 +134,13 @@ MonoBehaviour:
   fireRate: 1
   energyNeed: 2
   bullet: {fileID: 7832825723288813315, guid: 03e85719d4e8e4680a783d94881f516d, type: 3}
+  animSprites:
+  - {fileID: -1992392548, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
+  - {fileID: 953830213, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
+  - {fileID: 1565090284, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
+  - {fileID: -212221842, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
+  - {fileID: -116147957, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
+  - {fileID: 1066310737, guid: c7a0a14916f7047dd8dc2cd783b3dbd9, type: 3}
 --- !u!50 &2139806543633642669
 Rigidbody2D:
   serializedVersion: 4

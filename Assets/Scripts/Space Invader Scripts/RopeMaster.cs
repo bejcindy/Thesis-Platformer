@@ -8,9 +8,9 @@ public class RopeMaster : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private List<RopeSegment> ropeSegments = new List<RopeSegment>();
-    private float ropeSegLen = 0.5f;
-    private int segmentLength = 15;
-    private float lineWidth = 0.5f;
+    public float ropeSegLen = 0.5f;
+    public int segmentLength;
+    public float lineWidth = 0.5f;
 
     int originalLength;
     float timer;

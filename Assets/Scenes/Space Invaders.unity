@@ -898,6 +898,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c0a588cf0f84904af339780e301405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ropeSegLen: 0.5
+  segmentLength: 15
+  lineWidth: 0.5
 --- !u!120 &1085013749
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class AlienController : MonoBehaviour
     public float fireRate;
     public float energyNeed;
     public GameObject bullet;
+    public Sprite[] animSprites;
+    public AudioClip rechargeAudio;
 
     Transform[] shootPos;
     bool enoughEnergy;
@@ -15,11 +17,14 @@ public class AlienController : MonoBehaviour
     SpriteRenderer rend;
     bool isOver;
     bool noseContact;
+    float fillPercentage;
+    AudioSource aud;
 
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        aud = GetComponent<AudioSource>();
         shootPos = new Transform[transform.childCount];
         for(int i = 0; i < transform.childCount; i++)
         {
@@ -31,7 +36,33 @@ public class AlienController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, Mathf.Lerp(.3f, 1f, Mathf.InverseLerp(0, energyNeed, energy)));
+        //rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, Mathf.Lerp(.3f, 1f, Mathf.InverseLerp(0, energyNeed, energy)));
+        fillPercentage = Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0, energyNeed, energy));
+        if (fillPercentage >= 0 && fillPercentage <= .2f)
+        {
+            rend.sprite = animSprites[0];
+        }
+        else if (fillPercentage > .2f && fillPercentage <= .4f)
+        {
+            rend.sprite = animSprites[1];
+        }
+        else if (fillPercentage > .4f && fillPercentage <= .6f)
+        {
+            rend.sprite = animSprites[2];
+        }
+        else if (fillPercentage > .6f && fillPercentage <= .8f)
+        {
+            rend.sprite = animSprites[3];
+        }
+        else if (fillPercentage > .8f && fillPercentage < 1f)
+        {
+            rend.sprite = animSprites[4];
+        }
+        else if (fillPercentage == 1f)
+        {
+            rend.sprite = animSprites[5];
+        }
+        
         
     }
 
@@ -55,6 +86,7 @@ public class AlienController : MonoBehaviour
             }
             
         }
+
         //if (Input.GetMouseButtonDown(0) && enoughEnergy)
         //{
         //    canShoot = true;
