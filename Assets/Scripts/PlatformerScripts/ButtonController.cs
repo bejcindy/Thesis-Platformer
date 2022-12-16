@@ -21,4 +21,10 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Level Select");
     }
+    public void GotoSpaceInvader(){
+        SceneManager.LoadScene("Space Invaders");
+    }
+    public void GotoTapper(){
+        SceneManager.LoadScene("Tapper");
+    }
 }

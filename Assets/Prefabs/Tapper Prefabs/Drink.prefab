@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870d09def7e5c46fd9860be5cf352678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.003
+  moveSpeed: 0.005
   beerSprites:
   - {fileID: 1357804453, guid: 2f20407b911794d54ae46f3e4d6d7b16, type: 3}
   - {fileID: 1749682053, guid: 2f20407b911794d54ae46f3e4d6d7b16, type: 3}

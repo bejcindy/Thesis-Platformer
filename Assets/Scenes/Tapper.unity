@@ -1926,7 +1926,7 @@ MonoBehaviour:
   - {fileID: 1644012928}
   - {fileID: 2079834252}
   - {fileID: 868068662}
-  serveRate: 4
+  serveRate: 5
 --- !u!212 &1745831125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1967,7 +1967,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 466129271, guid: 5437799904157486aa22a51eca376b3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

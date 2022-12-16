@@ -14,6 +14,7 @@ public class CostumerController : MonoBehaviour
     bool happy;
     bool added;
     bool minused;
+    bool canDrink;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class CostumerController : MonoBehaviour
         angry = false;
         rightSideLimit = 5 - doorNumber;
         TapperGM.costumerNumber++;
+        canDrink=true;
     }
 
     // Update is called once per frame
@@ -56,15 +58,17 @@ public class CostumerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Beer"))
+        if (collision.CompareTag("Beer")&&canDrink)
         {
             happy = true;
             Destroy(collision.gameObject);
+            canDrink=false;
         }
-        if (collision.CompareTag("Snot"))
+        if (collision.CompareTag("Snot")&&canDrink)
         {
             angry = true;
             Destroy(collision.gameObject);
+            canDrink=false;
         }
     }
 }

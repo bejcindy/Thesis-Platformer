@@ -11,6 +11,7 @@ public class SIGameManager : MonoBehaviour
     void Start()
     {
         loseText.SetActive(false);
+        Time.timeScale=1;
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class SIGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //goto level selection scene
+            SceneManager.LoadScene("Level Select");
         }
     }
 }

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: a7779c4dcd8e24b34b713880f9c8e318
   - enabled: 0
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Space Invaders.unity
     guid: 0cef0cb214b8c4a5ba21f09f6b1a58b6
+  - enabled: 1
+    path: Assets/Scenes/Tapper.unity
+    guid: fb82155b13c964edeaecb3a817b2ac1a
   m_configObjects: {}

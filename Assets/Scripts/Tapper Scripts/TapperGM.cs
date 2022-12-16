@@ -16,6 +16,7 @@ public class TapperGM : MonoBehaviour
         life = 3;
         loseText.SetActive(false);
         winText.SetActive(false);
+        Time.timeScale=1;
     }
 
     // Update is called once per frame
@@ -34,6 +35,11 @@ public class TapperGM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //goto level selection scene
+            SceneManager.LoadScene("Level Select");
         }
     }
 }
